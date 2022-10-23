@@ -1,0 +1,15 @@
+#Make sure that we have sudo permission before doing some operations
+sudo: required
+language: generic
+
+#Docker CLI installed
+services:
+  - docker
+  
+#Series of command needed before our tests command
+before_install:
+  - docker build -t ostin/docker-react -f Dockerfile.dev .
+
+#Describing the commands used to execute test suite
+script:
+  - docker run -e CI=true ostin/docker-react npm run test
