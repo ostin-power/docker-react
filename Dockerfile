@@ -14,5 +14,6 @@ RUN npm run build
 #Sezione 2:
 #Installazione e configurazione NGINX
 FROM nginx
+EXPOSE 80
 #copio tutto quello che è stato fatto nella "builder phase"
 COPY --from=builder /app/build /usr/share/nginx/html
